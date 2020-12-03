@@ -175,7 +175,7 @@ function filterType(array,container) {
     let value= $('#type').val();
     console.log(value);
   if(value!="all"){
-  var arrayForType= array.filter((element)=>{
+  const arrayForType= array.filter((element)=>{
       return element.type==value;
   });
     print(arrayForType,container);
