@@ -106,7 +106,10 @@ const icons = [
       }
     ];
     const container= $("#container");
-     print(icons,container);
+    const AddColorIcon= addColor(icons);
+    console.log(AddColorIcon);
+    print(AddColorIcon,container);
+
   });
 
 
@@ -117,19 +120,44 @@ const icons = [
 function print(array,container){
 
   array.forEach((element) => {
-    const { family,prefix,name }= element;
-    container.append(
-      `
+    const { family,prefix,name,color}= element;
+    container.append( `
       <div>
-      <i class="${family} ${prefix}${name}"></i>
+      <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+      <h3>${name}</h3>
       </div>
-
-
       `
-
     )
 
   });
+  }
 
+//   milestone 2:
+// definire un array di colori e associare ad ogni
+// tipo di icona un colore.
+// Visualizzare le icone di colore diverso in base al
+// tipo.
+function addColor(array){
+  const ArrayColor = ["red","green","yellow"];
+  array.forEach((element, index)=>{
 
+    if (element.type=="animal"){
+     array[index]={
+      ...element,
+      color:ArrayColor[0],
+    }
+  }else if (element.type=="vegetable"){
+      array[index]={
+      ...element,
+      color:ArrayColor[1],
+    }
+    } else {
+      array[index]={
+      ...element,
+      color:ArrayColor[2],
+    }
+    }
+  });
+
+   return array;
 }
