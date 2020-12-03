@@ -1,6 +1,32 @@
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+* {
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  font-family: 'Lobster', cursive;
+  width: auto;
+  float: left;
+
+}
+ header  {
+   height: 90px;
+   padding-left: 20px;
+ }
+ select#type{
+   float: right;
+   margin-top:25px;
+ }
+
 #container {
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -9,7 +35,13 @@
   height: 200px;
   background-color: cadetblue;
   display: flex;
+  margin: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 15%;
+}
+
+#container > div > i {
+  font-size: 30px;
 }

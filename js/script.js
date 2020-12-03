@@ -107,9 +107,7 @@ const icons = [
     ];
     const container= $("#container");
     const AddColorIcon= addColor(icons);
-    const filter=filterType(AddColorIcon,container);
-    print(AddColorIcon,container);
-
+    filterType(AddColorIcon,container);
 
   });
 
@@ -171,21 +169,19 @@ function addColor(array){
 // e, ogni volta che cambia il valore selezionato,
 // visualizzare le icone corrispondenti.
 function filterType(array,container) {
-
+  print(array,container);
   $('#type').change(
     function(){
     let value= $('#type').val();
     console.log(value);
+  if(value!="all"){
   var arrayForType= array.filter((element)=>{
-    if(element.type==value){
-      return element;
-    } else if (value=="all"){
-      return element;
-    }
+      return element.type==value;
   });
     print(arrayForType,container);
-    return (arrayForType);
+  } else {
+    print(array,container);
+  }
 });
-
 
 }
