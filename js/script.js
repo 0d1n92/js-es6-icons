@@ -109,6 +109,7 @@ const icons = [
     const AddColorIcon= addColor(icons);
     console.log(AddColorIcon);
     print(AddColorIcon,container);
+    filterType(AddColorIcon,container);
 
   });
 
@@ -145,19 +146,46 @@ function addColor(array){
      array[index]={
       ...element,
       color:ArrayColor[0],
-    }
-  }else if (element.type=="vegetable"){
+      }
+    }else if (element.type=="vegetable"){
+
       array[index]={
       ...element,
       color:ArrayColor[1],
-    }
+      }
+
     } else {
       array[index]={
       ...element,
       color:ArrayColor[2],
-    }
+      }
     }
   });
 
    return array;
+}
+// milestone 3:
+// aggiungere una select per filtrare le icone in
+// base al tipo.
+// Popolare le options della select dinamicamente
+// e, ogni volta che cambia il valore selezionato,
+// visualizzare le icone corrispondenti.
+function filterType(array,container) {
+  container.html("");
+
+  $('#type').change(
+    function(){
+    let value= $('#type').val();
+    console.log(value);
+  var arrayForType= array.filter((element)=>{
+    if(element.type==value && element.type!="all"){
+      return element;
+
+    }
+  });
+  console.log(arrayForType);
+    return (arrayForType);
+});
+
+
 }
