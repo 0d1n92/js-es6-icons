@@ -107,9 +107,9 @@ const icons = [
     ];
     const container= $("#container");
     const AddColorIcon= addColor(icons);
-    console.log(AddColorIcon);
+    const filter=filterType(AddColorIcon,container);
     print(AddColorIcon,container);
-    filterType(AddColorIcon,container);
+
 
   });
 
@@ -119,7 +119,7 @@ const icons = [
   // literal, visualizzare in pagina tutte le icone con il
   // proprio nome.
 function print(array,container){
-
+  container.html("");
   array.forEach((element) => {
     const { family,prefix,name,color}= element;
     container.append( `
@@ -171,19 +171,19 @@ function addColor(array){
 // e, ogni volta che cambia il valore selezionato,
 // visualizzare le icone corrispondenti.
 function filterType(array,container) {
-  container.html("");
 
   $('#type').change(
     function(){
     let value= $('#type').val();
     console.log(value);
   var arrayForType= array.filter((element)=>{
-    if(element.type==value && element.type!="all"){
+    if(element.type==value){
       return element;
-
+    } else if (value=="all"){
+      return element;
     }
   });
-  console.log(arrayForType);
+    print(arrayForType,container);
     return (arrayForType);
 });
 
